@@ -197,8 +197,22 @@ uid=0(root) gid=0(root) groups=0(root)
 
 Una vez ya con la escalada de privilegios completada, acabamos la máquina.
 
+
+**Referencias** 
+Los comandos usados para la escalada de privilegios salen de https://gtfobins.org/.
+
+
 ## Flujo de ataque
 
 1. **Enumeración** Se encuentra un Apache y, al enumerar directorios, se encuentra uno para poder subir archivos al servidor.
 2. **Explotación** Se explota el endpoint `archivo.html` subiendo una revshell con la extensión .php.jpg.
 3. **Escalada de privilegios** Usando el comando `sudo -l` vamos escalando los privilegios de distintos usuarios siguiendo este orden: www-data → daphne → vilma → shaggy → fred → scooby → root.
+
+
+
+## Mitigaciones
+
+1. Revisar los endpoints que permiten subir archivos: si es necesario mantenerlos, restringir estrictamente la extensión y el tamaño permitido, validar el contenido real (no solo la extensión), y generar nombres de archivo aleatorios o difíciles de adivinar para que solo puedan acceder los usuarios autorizados.
+
+
+2. Usar el zero trust para poder evitar la escalada de privilegios lo máximo posible en este caso configurando los permisos de  usuarios para que tengan solo los permisos necesarios.
