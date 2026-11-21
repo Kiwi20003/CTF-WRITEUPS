@@ -1,4 +1,4 @@
-# Writeup HasKhell
+# HaskHell
 
 ## Resumen
 
