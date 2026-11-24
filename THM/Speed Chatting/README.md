@@ -15,7 +15,7 @@ Con esto sé que la máquina es Linux.
 
 Sigo con nmap para escanear los puertos abiertos.
 
-`nmap -sVC -p- --min-rate 5000 <vmip> -oN nmap`
+`nmap -sVC -p- --min-rate 5000 <vmip> -oG nmap`
 
 ```
 PORT     STATE SERVICE VERSION
